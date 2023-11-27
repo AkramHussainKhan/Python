@@ -104,4 +104,55 @@ print(sales.pivot_table(index = "type", columns = "department", values = "weekly
 # Print the mean weekly_sales by department and type; fill missing values with 0s; sum all rows and cols
 print(sales.pivot_table(values="weekly_sales", index="department", columns="type", fill_value = 0, margins = True))
 ```
+## Subsetting with .loc[]
+The killer feature for indexes is .loc[]: a subsetting method that accepts index values. When you pass it a single argument, it will take a subset of rows.
+The code for subsetting using .loc[] can be easier to read than standard square bracket subsetting, which can make your code less burdensome to maintain.
+
+* Create a list called cities that contains "Moscow" and "Saint Petersburg".
+* Use [] subsetting to filter temperatures for rows where the city column takes a value in the cities list.
+* Use .loc[] subsetting to filter temperatures_ind for rows where the city is in the cities list.
+
+```python
+# Make a list of cities to subset on
+cities = ["Moscow", "Saint Petersburg"]
+# Subset temperatures using square brackets
+print(temperatures[temperatures['city'].isin(cities)])
+# Subset temperatures_ind using .loc[]
+print(temperatures_ind.loc[cities])
+```
+### Setting multi-level indexes
+Indexes can also be made out of multiple columns, forming a multi-level index (sometimes called a hierarchical index). There is a trade-off to using these.
+The benefit is that multi-level indexes make it more natural to reason about nested categorical variables. For example, in a clinical trial, you might have control and treatment groups. Then each test subject belongs to one or another group, and we can say that a test subject is nested inside the treatment group. Similarly, in the temperature dataset, the city is located in the country, so we can say a city is nested inside the country.
+
+* Set the index of temperatures to the "country" and "city" columns, and assign this to temperatures_ind.
+* Specify two country/city pairs to keep: "Brazil"/"Rio De Janeiro" and "Pakistan"/"Lahore", assigning to rows_to_keep.
+* Print and subset temperatures_ind for rows_to_keep using .loc[].
+
+```python
+# Index temperatures by country & city
+temperatures_ind = temperatures.set_index(['country','city'])
+# List of tuples: Brazil, Rio De Janeiro & Pakistan, Lahore
+rows_to_keep = [("Brazil","Rio De Janeiro"),("Pakistan","Lahore")]
+# Subset for rows to keep
+print(temperatures_ind.loc[rows_to_keep])
+```
+
+### Sorting by index values
+Previously, you changed the order of the rows in a DataFrame by calling .sort_values(). It's also useful to be able to sort by elements in the index. For this, you need to use .sort_index().
+* Sort temperatures_ind by the index values.
+* Sort temperatures_ind by the index values at the "city" level.
+* Sort temperatures_ind by ascending country then descending city.
+
+```python
+# Sort temperatures_ind by index values
+print(temperatures_ind.sort_index())
+# Sort temperatures_ind by index values at the city level
+print(temperatures_ind.sort_index(level='city'))
+# Sort temperatures_ind by country then descending city
+print(temperatures_ind.sort_index(level=['country','city'],ascending = [True, False]))
+```
+
+
+
+
   

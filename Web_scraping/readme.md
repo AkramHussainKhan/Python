@@ -1,1 +1,4 @@
-Here we try to scrape data from [bikroy.com](https://bikroy.com/), for practice purposes.
+Here we  are tring  to scrape data from different sites for practice purposes.
+
+
+[bikroy.com](https://bikroy.com/), 

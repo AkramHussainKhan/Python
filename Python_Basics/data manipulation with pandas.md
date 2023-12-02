@@ -278,6 +278,75 @@ mean_temp_by_city
 print(mean_temp_by_city[mean_temp_by_city==min(mean_temp_by_city)])
 ```
 
+# Creating and visualizing data frame 
+
+* Print the head of the avocados dataset. What columns are available?
+* For each avocado size group, calculate the total number sold, storing as nb_sold_by_size.
+* Create a bar plot of the number of avocados sold by size.
+* Show the plot.
+
+```python
+# Import matplotlib.pyplot with alias plt
+import matplotlib.pyplot as plt
+# Look at the first few rows of data
+print(avocados.head())
+# Get the total number of avocados sold of each size
+nb_sold_by_size = avocados.groupby('size')['nb_sold'].sum()
+nb_sold_by_size 
+# Create a bar plot of the number of avocados sold by size
+nb_sold_by_size.plot(kind = 'bar')
+# Show the plot
+plt.show()
+```
+## Changes in sales over time
+Line plots are designed to visualize the relationship between two numeric variables, where each data values is connected to the next one. They are especially useful for visualizing the change in a number over time since each time point is naturally connected to the next time point. In this exercise, you'll visualize the change in avocado sales over three years.
+
+* 	Get the total number of avocados sold on each date. The DataFrame has two rows for each date—one for organic, and one for conventional. Save this as nb_sold_by_date.
+* 	Create a line plot of the number of avocados sold.
+*	Show the plot.
+
+```python
+# Import matplotlib.pyplot with alias plt
+import matplotlib.pyplot as plt
+avocados.head()
+# Get the total number of avocados sold on each date
+nb_sold_by_date = avocados.groupby('date')['nb_sold'].sum()
+nb_sold_by_date
+# Create a line plot of the number of avocados sold by date
+nb_sold_by_date.plot(kind = 'line')
+# Show the plot
+plt.show()
+```
+### Avocado supply and demand
+Scatter plots are ideal for visualizing relationships between numerical variables. In this exercise, you'll compare the number of avocados sold to average price and see if they're at all related. If they're related, you may be able to use one number to predict the other.
+*	Create a scatter plot with nb_sold on the x-axis and avg_price on the y-axis. Title it "Number of avocados sold vs. average price".
+*	Show the plot.
+```python
+# Scatter plot of avg_price vs. nb_sold with title
+avocados.plot(x = 'nb_sold', y = 'avg_price', kind = 'scatter', title ="Number of avocados sold vs. average price" )
+# Show the plot
+plt.show()
+```
+###  Price of conventional vs. organic avocados
+Creating multiple plots for different subsets of data allows you to compare groups. In this exercise, you'll create multiple histograms to compare the prices of conventional and organic avocados.
+*	Subset avocados for the conventional type, and the average price column. Create a histogram.
+*	Create a histogram of avg_price for organic type avocados.
+*	Add a legend to your plot, with the names "conventional" and "organic".
+*	Modify your code to use 20 bins in both histograms.
+*	Modify your code to adjust the transparency of both histograms to 0.5 to see how much overlap there is between the two distributions.
+*	Show your plot.
+
+```python
+# Modify bins to 20
+avocados[avocados["type"] == "conventional"]["avg_price"].hist(alpha=0.5, bins = 20)
+# Modify bins to 20
+avocados[avocados["type"] == "organic"]["avg_price"].hist(alpha=0.5, bins=20)
+# Add a legend
+plt.legend(["conventional", "organic"])
+# Show the plot
+plt.show()
+
+```
 
 
   

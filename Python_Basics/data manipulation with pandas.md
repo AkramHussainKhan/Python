@@ -355,7 +355,7 @@ Missing values are everywhere, and you don't want them interfering with your wor
 *	Print a DataFrame that shows whether each value in avocados_2016 is missing or not.
 *	Print a summary that shows whether any value in each column is missing or not.
 *	Create a bar plot of the total number of missing values in each column.
-*	
+
 ```python
 # Import matplotlib.pyplot with alias plt
 import matplotlib.pyplot as plt
@@ -374,7 +374,7 @@ From list of dictionaries:
 
 *	Create a list of dictionaries with the new data called avocados_list.
 *	Convert the list into a DataFrame called avocados_2019.
-*Print your new DataFrame.
+* Print your new DataFrame.
 
 ```python
 # Create a list of dictionaries with new data
@@ -392,10 +392,10 @@ print(avocados_2019)
 ```
 Dictionary of lists:
 
-*Create a dictionary of lists with the new data called avocados_dict.
+* Create a dictionary of lists with the new data called avocados_dict.
 *	Convert the dictionary to a DataFrame called avocados_2019.
 * Print your new DataFrame.
-* 
+
 ```python
 # Create a dictionary of lists with new data
 avocados_dict = {

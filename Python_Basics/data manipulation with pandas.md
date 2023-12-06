@@ -1,3 +1,4 @@
+
 ## Group by
 
 * Calculate the total weekly_sales over the whole dataset.
@@ -346,6 +347,66 @@ plt.legend(["conventional", "organic"])
 # Show the plot
 plt.show()
 
+```
+
+#### Finding missing values
+Missing values are everywhere, and you don't want them interfering with your work. Some functions ignore missing data by default, but that's not always the behavior you might want. Some functions can't handle missing values at all, so these values need to be taken care of before you can use them. If you don't know where your missing values are, or if they exist, you could make mistakes in your analysis.
+
+*	Print a DataFrame that shows whether each value in avocados_2016 is missing or not.
+*	Print a summary that shows whether any value in each column is missing or not.
+*	Create a bar plot of the total number of missing values in each column.
+*	
+```python
+# Import matplotlib.pyplot with alias plt
+import matplotlib.pyplot as plt
+# Check individual values for missing values
+print(avocados_2016.isna())
+# Check each column for missing values
+print(avocados_2016.isna().any())
+# Bar plot of missing values by variable
+avocados_2016.isna().sum().plot(kind="bar")
+# Show plot
+plt.show()
+```
+
+#### Creating dataframe:
+From list of dictionaries:
+
+*	Create a list of dictionaries with the new data called avocados_list.
+*	Convert the list into a DataFrame called avocados_2019.
+*Print your new DataFrame.
+
+```python
+# Create a list of dictionaries with new data
+avocados_list = [
+    {"date": "2019-11-03", "small_sold": 10376832, "large_sold": 7835071},
+    {"date": "2019-11-10", "small_sold": 10717154, "large_sold": 8561348},
+]
+
+# Convert list into DataFrame
+avocados_2019 = pd.DataFrame(avocados_list)
+
+# Print the new DataFrame
+print(avocados_2019)
+
+```
+Dictionary of lists:
+
+*Create a dictionary of lists with the new data called avocados_dict.
+*	Convert the dictionary to a DataFrame called avocados_2019.
+* Print your new DataFrame.
+* 
+```python
+# Create a dictionary of lists with new data
+avocados_dict = {
+  "date": ["2019-11-17","2019-12-01"],
+  "small_sold": [10859987,9291631],
+  "large_sold": [7674135,6238096]
+}
+# Convert dictionary into DataFrame
+avocados_2019 = pd.DataFrame(avocados_dict)
+# Print the new DataFrame
+print(avocados_2019)
 ```
 
 
